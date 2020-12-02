@@ -56,6 +56,8 @@ Route::prefix('profiles')->group(function(){
   Route::get('/invoice/edit/{invoice_id}','CustomerController@editInvoice')->name('customers.edit.invoice');
    Route::post('/invoice/update/{invoice_id}','CustomerController@updateInvoice')->name('customers.update.invoice');
    Route::get('/invoice/details/{invoice_id}','CustomerController@invoiceDetailsPdf')->name('customers.invoice.details.pdf');
+   Route::get('/paid','CustomerController@paidCustomer')->name('customers.paid');
+    Route::get('/paid/pdf','CustomerController@paidCustomerPdf')->name('customers.paid.pdf');
 
 });
   Route::prefix('units')->group(function(){

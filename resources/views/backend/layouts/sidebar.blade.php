@@ -145,6 +145,19 @@ $route=Route::current()->getName();
                   <p>Credit Customer</p>
                 </a>
               </li>
+               <li class="nav-item">
+                <a href="{{route('customers.paid')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Paid Customer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('customers.wise.report')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Customer wise Pais/credit</p>
+                </a>
+              </li>
+              
               
               
             </ul>

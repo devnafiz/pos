@@ -120,7 +120,30 @@ class CustomerController extends Controller
      }
 
      public function invoiceDetailsPdf(Request $request,$invoice_id){
-          dd('ok');
+          $data['payment']=Payment::where('invoice_id',$invoice_id)->first();
+          $pdf = PDF::loadView('backend.pdf.customer-invoice-details-pdf', $data);
+          $pdf->SetProtection(['copy', 'print'], '', 'pass');
+          return $pdf->stream('document.pdf');
+     }
+     
+     public function paidCustomer(){
+           $allData=Payment::where('paid_status','!=','full_due')->get();
+           //dd($allData);
+           return view('backend.customer.paid-customer',compact('allData'));
+     }
+
+
+     public function paidCustomerPdf(Request $request){
+           $data['allData']=Payment::where('paid_status','!=','full_due')->get();
+            $pdf = PDF::loadView('backend.pdf.customer-paid-pdf', $data);
+          $pdf->SetProtection(['copy', 'print'], '', 'pass');
+          return $pdf->stream('document.pdf');
+
+     }
+
+     public function customerWiseReport(){
+
+          
      }
 
 }
